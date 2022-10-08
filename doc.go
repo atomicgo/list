@@ -1,9 +1,4 @@
 /*
-Package template is used to generate new AtomicGo repositories.
-
-Write the description of the module here. You can use **markdown**!
-This description should clearly explain what the package does.
-
-Example description: https://golang.org/src/encoding/gob/doc.go
+Package list implements a generic list. It is a wrapper around a slice and has multiple useful methods.
 */
-package template
+package list
