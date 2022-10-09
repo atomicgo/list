@@ -183,13 +183,16 @@ func ExampleList_Copy() {
 
 	l.Append("a", "b", "c")
 
-	fmt.Println(l.Copy().Append("appended"))
-	fmt.Println(l.Copy().Append("appended2"))
+	fmt.Println(l.Append("appended"))         // Overwrites the original list
+	fmt.Println(l.Copy().Append("appended1")) // Does not overwrite the original list
+	fmt.Println(l.Copy().Append("appended2")) // Does not overwrite the original list
 	fmt.Println(l)
 	// Output:
 	// [a b c appended]
-	// [a b c appended2]
-	// [a b c]
+	// [a b c appended appended1]
+	// [a b c appended appended2]
+	// [a b c appended]
+
 }
 
 func ExampleList_Clear() {
