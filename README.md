@@ -16,7 +16,7 @@
 </a>
 
 <a href="https://codecov.io/gh/atomicgo/list">
-<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-0-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
+<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-23-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
 </a>
 
 <a href="https://opensource.org/licenses/MIT" target="_blank">
@@ -85,7 +85,941 @@ Package list implements a generic list. It is a wrapper around a slice and has m
 
 ## Index
 
+- [type List](<#type-list>)
+  - [func SliceToList[T any](items []T) List[T]](<#func-slicetolist>)
+  - [func (l *List[T]) Append(items ...T) *List[T]](<#func-listt-append>)
+  - [func (l *List[T]) Clear() *List[T]](<#func-listt-clear>)
+  - [func (l List[T]) Contains(item T) bool](<#func-listt-contains>)
+  - [func (l *List[T]) Copy() *List[T]](<#func-listt-copy>)
+  - [func (l *List[T]) Filter(f func(T) bool) *List[T]](<#func-listt-filter>)
+  - [func (l List[T]) ForEach(f func(T))](<#func-listt-foreach>)
+  - [func (l *List[T]) Get(i int) T](<#func-listt-get>)
+  - [func (l List[T]) IndexOf(item T) int](<#func-listt-indexof>)
+  - [func (l *List[T]) Insert(i int, items ...T) *List[T]](<#func-listt-insert>)
+  - [func (l *List[T]) Len() int](<#func-listt-len>)
+  - [func (l *List[T]) Map(f func(T) T) *List[T]](<#func-listt-map>)
+  - [func (l *List[T]) Prepend(items ...T) *List[T]](<#func-listt-prepend>)
+  - [func (l *List[T]) Reduce(f func(T, T) T) T](<#func-listt-reduce>)
+  - [func (l *List[T]) Remove(i int) *List[T]](<#func-listt-remove>)
+  - [func (l *List[T]) Reverse() *List[T]](<#func-listt-reverse>)
+  - [func (l *List[T]) Set(i int, item T) *List[T]](<#func-listt-set>)
+  - [func (l *List[T]) Shuffle() *List[T]](<#func-listt-shuffle>)
+  - [func (l *List[T]) Slice() []T](<#func-listt-slice>)
+  - [func (l *List[T]) Sort(f func(T, T) bool) *List[T]](<#func-listt-sort>)
+  - [func (l List[T]) String() string](<#func-listt-string>)
+  - [func (l *List[T]) Swap(i, j int) *List[T]](<#func-listt-swap>)
 
+
+## type [List](<https://github.com/atomicgo/list/blob/main/list.go#L11-L13>)
+
+List is a generic list type.
+
+```go
+type List[T any] struct {
+    // contains filtered or unexported fields
+}
+```
+
+<details><summary>Example (Functional)</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	l.Map(func(s string) string {
+		return s + "!"
+	}).Filter(func(s string) bool {
+		return !strings.Contains(s, "b")
+	})
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a! c!]
+```
+
+</p>
+</details>
+
+### func [SliceToList](<https://github.com/atomicgo/list/blob/main/list.go#L16>)
+
+```go
+func SliceToList[T any](items []T) List[T]
+```
+
+SliceToList converts a slice to a list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	l := list.SliceToList([]string{"a", "b", "c"})
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Append](<https://github.com/atomicgo/list/blob/main/list.go#L37>)
+
+```go
+func (l *List[T]) Append(items ...T) *List[T]
+```
+
+Append adds items to the end of list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Clear](<https://github.com/atomicgo/list/blob/main/list.go#L141>)
+
+```go
+func (l *List[T]) Clear() *List[T]
+```
+
+Clear removes all items from the list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Clear()
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[]
+```
+
+</p>
+</details>
+
+### func \(List\[T\]\) [Contains](<https://github.com/atomicgo/list/blob/main/list.go#L109>)
+
+```go
+func (l List[T]) Contains(item T) bool
+```
+
+Contains returns true if the list contains the given item.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.Contains("b"))
+}
+```
+
+#### Output
+
+```
+true
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Copy](<https://github.com/atomicgo/list/blob/main/list.go#L148>)
+
+```go
+func (l *List[T]) Copy() *List[T]
+```
+
+Copy returns a new copy of the list. Useful when you want to modify a list without modifying the original.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.Copy().Append("appended"))
+	fmt.Println(l.Copy().Append("appended2"))
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a b c appended]
+[a b c appended2]
+[a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Filter](<https://github.com/atomicgo/list/blob/main/list.go#L74>)
+
+```go
+func (l *List[T]) Filter(f func(T) bool) *List[T]
+```
+
+Filter removes all items from the list that do not match the given predicate.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	l.Filter(func(s string) bool {
+		return s != "b"
+	})
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a c]
+```
+
+</p>
+</details>
+
+### func \(List\[T\]\) [ForEach](<https://github.com/atomicgo/list/blob/main/list.go#L102>)
+
+```go
+func (l List[T]) ForEach(f func(T))
+```
+
+ForEach iterates over the list and calls the given function for each item.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.ForEach(func(s string) {
+		fmt.Println(s)
+	})
+}
+```
+
+#### Output
+
+```
+a
+b
+c
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Get](<https://github.com/atomicgo/list/blob/main/list.go#L26>)
+
+```go
+func (l *List[T]) Get(i int) T
+```
+
+Get returns the item at the given index.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.Get(1))
+}
+```
+
+#### Output
+
+```
+b
+```
+
+</p>
+</details>
+
+### func \(List\[T\]\) [IndexOf](<https://github.com/atomicgo/list/blob/main/list.go#L120>)
+
+```go
+func (l List[T]) IndexOf(item T) int
+```
+
+IndexOf returns the index of the first occurrence of the given item.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.IndexOf("b"))
+}
+```
+
+#### Output
+
+```
+1
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Insert](<https://github.com/atomicgo/list/blob/main/list.go#L54>)
+
+```go
+func (l *List[T]) Insert(i int, items ...T) *List[T]
+```
+
+Insert adds items at the given index.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Insert(1, "inserted")
+	fmt.Println(l)
+
+	l.Insert(0, "a", "b", "c")
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a inserted b c]
+[a b c a inserted b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Len](<https://github.com/atomicgo/list/blob/main/list.go#L21>)
+
+```go
+func (l *List[T]) Len() int
+```
+
+Len returns the length of the list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.Len())
+}
+```
+
+#### Output
+
+```
+3
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Map](<https://github.com/atomicgo/list/blob/main/list.go#L65>)
+
+```go
+func (l *List[T]) Map(f func(T) T) *List[T]
+```
+
+Map overwrites the list with the result of applying the given function to each item.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c").Map(strings.ToUpper)
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[A B C]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Prepend](<https://github.com/atomicgo/list/blob/main/list.go#L43>)
+
+```go
+func (l *List[T]) Prepend(items ...T) *List[T]
+```
+
+Prepend adds items to the beginning of list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Prepend("d", "e", "f")
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[d e f a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Reduce](<https://github.com/atomicgo/list/blob/main/list.go#L88>)
+
+```go
+func (l *List[T]) Reduce(f func(T, T) T) T
+```
+
+Reduce reduces the list to a single value by applying the given function to each item.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[int]
+
+	l.Append(1, 2, 3)
+	sum := l.Reduce(func(a, b int) int {
+		return a + b
+	})
+
+	fmt.Println(sum)
+}
+```
+
+#### Output
+
+```
+6
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Remove](<https://github.com/atomicgo/list/blob/main/list.go#L48>)
+
+```go
+func (l *List[T]) Remove(i int) *List[T]
+```
+
+Remove removes the item at the given index.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Remove(1)
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Reverse](<https://github.com/atomicgo/list/blob/main/list.go#L131>)
+
+```go
+func (l *List[T]) Reverse() *List[T]
+```
+
+Reverse reverses the list.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Reverse()
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[c b a]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Set](<https://github.com/atomicgo/list/blob/main/list.go#L31>)
+
+```go
+func (l *List[T]) Set(i int, item T) *List[T]
+```
+
+Set sets the item at the given index.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Set(1, "set")
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a set c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Shuffle](<https://github.com/atomicgo/list/blob/main/list.go#L166>)
+
+```go
+func (l *List[T]) Shuffle() *List[T]
+```
+
+Shuffle shuffles the list. You need to seed the random number generator yourself.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	rand.Seed(1337) // You should probably use time.Now().UnixNano() in your code.
+
+	l.Append("a", "b", "c")
+	l.Shuffle()
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[b a c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Slice](<https://github.com/atomicgo/list/blob/main/list.go#L60>)
+
+```go
+func (l *List[T]) Slice() []T
+```
+
+Slice returns the list as a slice.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l.Slice())
+}
+```
+
+#### Output
+
+```
+[a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Sort](<https://github.com/atomicgo/list/blob/main/list.go#L156>)
+
+```go
+func (l *List[T]) Sort(f func(T, T) bool) *List[T]
+```
+
+Sort sorts the list using the given function.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[int]
+
+	l.Append(3, 2, 1)
+	l.Sort(func(a, b int) bool {
+		return a < b
+	})
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[1 2 3]
+```
+
+</p>
+</details>
+
+### func \(List\[T\]\) [String](<https://github.com/atomicgo/list/blob/main/list.go#L181>)
+
+```go
+func (l List[T]) String() string
+```
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[a b c]
+```
+
+</p>
+</details>
+
+### func \(\*List\[T\]\) [Swap](<https://github.com/atomicgo/list/blob/main/list.go#L176>)
+
+```go
+func (l *List[T]) Swap(i, j int) *List[T]
+```
+
+Swap swaps the items at the given indices.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"atomicgo.dev/list"
+)
+
+func main() {
+	var l list.List[string]
+
+	l.Append("a", "b", "c")
+	l.Swap(0, 2)
+
+	fmt.Println(l)
+}
+```
+
+#### Output
+
+```
+[c b a]
+```
+
+</p>
+</details>
 
 
 
