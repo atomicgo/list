@@ -4,7 +4,7 @@ repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
 
   # A short description of the repository that will show up on GitHub
-  description: 📝 A generic list implementation in Go
+  description: 📝 A generic list implementation in Go for easy functional programming
 
   # A comma-separated list of topics to set on the repository
   topics: atomicgo, go, golang, golang-library, list, array, generic
