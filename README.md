@@ -8,7 +8,7 @@
 </a>
 
 <a href="https://codecov.io/gh/atomicgo/list" target="_blank">
-<img src="https://img.shields.io/github/workflow/status/atomicgo/list/Go?label=tests&style=flat-square" alt="Tests">
+<img src="https://img.shields.io/github/actions/workflow/status/atomicgo/list/go.yml?style=flat-square" alt="Tests">
 </a>
 
 <a href="https://codecov.io/gh/atomicgo/list" target="_blank">
