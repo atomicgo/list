@@ -1,7 +1,7 @@
 <h1 align="center">AtomicGo | list</h1>
 
 <p align="center">
-<img src="https://img.shields.io/endpoint?url=https://atomicgo.dev/api/shields/list&style=flat-square" alt="Downloads">
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatomicgo.dev%2Fapi%2Fshields%2Flist&style=flat-square" alt="Downloads">
 
 <a href="https://github.com/atomicgo/list/releases">
 <img src="https://img.shields.io/github/v/release/atomicgo/list?style=flat-square" alt="Latest Release">
