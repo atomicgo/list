@@ -73,31 +73,32 @@ Package list implements a generic list. It is a wrapper around a slice and has m
 
 ## Index
 
-- [type List](<#type-list>)
-  - [func SliceToList[T any](items []T) List[T]](<#func-slicetolist>)
-  - [func (l *List[T]) Append(items ...T) *List[T]](<#func-listt-append>)
-  - [func (l *List[T]) Clear() *List[T]](<#func-listt-clear>)
-  - [func (l List[T]) Contains(item T) bool](<#func-listt-contains>)
-  - [func (l *List[T]) Copy() *List[T]](<#func-listt-copy>)
-  - [func (l *List[T]) Filter(f func(T) bool) *List[T]](<#func-listt-filter>)
-  - [func (l List[T]) ForEach(f func(T))](<#func-listt-foreach>)
-  - [func (l *List[T]) Get(i int) T](<#func-listt-get>)
-  - [func (l List[T]) IndexOf(item T) int](<#func-listt-indexof>)
-  - [func (l *List[T]) Insert(i int, items ...T) *List[T]](<#func-listt-insert>)
-  - [func (l *List[T]) Len() int](<#func-listt-len>)
-  - [func (l *List[T]) Map(f func(T) T) *List[T]](<#func-listt-map>)
-  - [func (l *List[T]) Prepend(items ...T) *List[T]](<#func-listt-prepend>)
-  - [func (l *List[T]) Reduce(f func(T, T) T) T](<#func-listt-reduce>)
-  - [func (l *List[T]) Remove(i int) *List[T]](<#func-listt-remove>)
-  - [func (l *List[T]) Reverse() *List[T]](<#func-listt-reverse>)
-  - [func (l *List[T]) Set(i int, item T) *List[T]](<#func-listt-set>)
-  - [func (l *List[T]) Shuffle() *List[T]](<#func-listt-shuffle>)
-  - [func (l *List[T]) Slice() []T](<#func-listt-slice>)
-  - [func (l *List[T]) Sort(f func(T, T) bool) *List[T]](<#func-listt-sort>)
-  - [func (l List[T]) String() string](<#func-listt-string>)
-  - [func (l *List[T]) Swap(i, j int) *List[T]](<#func-listt-swap>)
+- [type List](<#List>)
+  - [func SliceToList\[T any\]\(items \[\]T\) List\[T\]](<#SliceToList>)
+  - [func \(l \*List\[T\]\) Append\(items ...T\) \*List\[T\]](<#List[T].Append>)
+  - [func \(l \*List\[T\]\) Clear\(\) \*List\[T\]](<#List[T].Clear>)
+  - [func \(l List\[T\]\) Contains\(item T\) bool](<#List[T].Contains>)
+  - [func \(l \*List\[T\]\) Copy\(\) \*List\[T\]](<#List[T].Copy>)
+  - [func \(l \*List\[T\]\) Filter\(f func\(T\) bool\) \*List\[T\]](<#List[T].Filter>)
+  - [func \(l List\[T\]\) ForEach\(f func\(T\)\)](<#List[T].ForEach>)
+  - [func \(l \*List\[T\]\) Get\(i int\) T](<#List[T].Get>)
+  - [func \(l List\[T\]\) IndexOf\(item T\) int](<#List[T].IndexOf>)
+  - [func \(l \*List\[T\]\) Insert\(i int, items ...T\) \*List\[T\]](<#List[T].Insert>)
+  - [func \(l \*List\[T\]\) Len\(\) int](<#List[T].Len>)
+  - [func \(l \*List\[T\]\) Map\(f func\(T\) T\) \*List\[T\]](<#List[T].Map>)
+  - [func \(l \*List\[T\]\) Prepend\(items ...T\) \*List\[T\]](<#List[T].Prepend>)
+  - [func \(l \*List\[T\]\) Reduce\(f func\(T, T\) T\) T](<#List[T].Reduce>)
+  - [func \(l \*List\[T\]\) Remove\(i int\) \*List\[T\]](<#List[T].Remove>)
+  - [func \(l \*List\[T\]\) Reverse\(\) \*List\[T\]](<#List[T].Reverse>)
+  - [func \(l \*List\[T\]\) Set\(i int, item T\) \*List\[T\]](<#List[T].Set>)
+  - [func \(l \*List\[T\]\) Shuffle\(\) \*List\[T\]](<#List[T].Shuffle>)
+  - [func \(l \*List\[T\]\) Slice\(\) \[\]T](<#List[T].Slice>)
+  - [func \(l \*List\[T\]\) Sort\(f func\(T, T\) bool\) \*List\[T\]](<#List[T].Sort>)
+  - [func \(l List\[T\]\) String\(\) string](<#List[T].String>)
+  - [func \(l \*List\[T\]\) Swap\(i, j int\) \*List\[T\]](<#List[T].Swap>)
 
 
+<a name="List"></a>
 ## type [List](<https://github.com/atomicgo/list/blob/main/list.go#L11-L13>)
 
 List is a generic list type.
@@ -110,6 +111,8 @@ type List[T any] struct {
 
 <details><summary>Example (Functional)</summary>
 <p>
+
+
 
 ```go
 package main
@@ -145,6 +148,7 @@ func main() {
 </p>
 </details>
 
+<a name="SliceToList"></a>
 ### func [SliceToList](<https://github.com/atomicgo/list/blob/main/list.go#L16>)
 
 ```go
@@ -155,6 +159,8 @@ SliceToList converts a slice to a list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -181,6 +187,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Append"></a>
 ### func \(\*List\[T\]\) [Append](<https://github.com/atomicgo/list/blob/main/list.go#L37>)
 
 ```go
@@ -191,6 +198,8 @@ Append adds items to the end of list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -219,6 +228,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Clear"></a>
 ### func \(\*List\[T\]\) [Clear](<https://github.com/atomicgo/list/blob/main/list.go#L141>)
 
 ```go
@@ -229,6 +239,8 @@ Clear removes all items from the list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -258,6 +270,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Contains"></a>
 ### func \(List\[T\]\) [Contains](<https://github.com/atomicgo/list/blob/main/list.go#L109>)
 
 ```go
@@ -268,6 +281,8 @@ Contains returns true if the list contains the given item.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -296,6 +311,7 @@ true
 </p>
 </details>
 
+<a name="List[T].Copy"></a>
 ### func \(\*List\[T\]\) [Copy](<https://github.com/atomicgo/list/blob/main/list.go#L148>)
 
 ```go
@@ -306,6 +322,8 @@ Copy returns a new copy of the list. Useful when you want to modify a list witho
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -340,6 +358,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Filter"></a>
 ### func \(\*List\[T\]\) [Filter](<https://github.com/atomicgo/list/blob/main/list.go#L74>)
 
 ```go
@@ -350,6 +369,8 @@ Filter removes all items from the list that do not match the given predicate.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -382,6 +403,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].ForEach"></a>
 ### func \(List\[T\]\) [ForEach](<https://github.com/atomicgo/list/blob/main/list.go#L102>)
 
 ```go
@@ -392,6 +414,8 @@ ForEach iterates over the list and calls the given function for each item.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -423,6 +447,7 @@ c
 </p>
 </details>
 
+<a name="List[T].Get"></a>
 ### func \(\*List\[T\]\) [Get](<https://github.com/atomicgo/list/blob/main/list.go#L26>)
 
 ```go
@@ -433,6 +458,8 @@ Get returns the item at the given index.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -461,6 +488,7 @@ b
 </p>
 </details>
 
+<a name="List[T].IndexOf"></a>
 ### func \(List\[T\]\) [IndexOf](<https://github.com/atomicgo/list/blob/main/list.go#L120>)
 
 ```go
@@ -471,6 +499,8 @@ IndexOf returns the index of the first occurrence of the given item.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -499,6 +529,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Insert"></a>
 ### func \(\*List\[T\]\) [Insert](<https://github.com/atomicgo/list/blob/main/list.go#L54>)
 
 ```go
@@ -509,6 +540,8 @@ Insert adds items at the given index.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -541,6 +574,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Len"></a>
 ### func \(\*List\[T\]\) [Len](<https://github.com/atomicgo/list/blob/main/list.go#L21>)
 
 ```go
@@ -551,6 +585,8 @@ Len returns the length of the list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -579,6 +615,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Map"></a>
 ### func \(\*List\[T\]\) [Map](<https://github.com/atomicgo/list/blob/main/list.go#L65>)
 
 ```go
@@ -589,6 +626,8 @@ Map overwrites the list with the result of applying the given function to each i
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -618,6 +657,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Prepend"></a>
 ### func \(\*List\[T\]\) [Prepend](<https://github.com/atomicgo/list/blob/main/list.go#L43>)
 
 ```go
@@ -628,6 +668,8 @@ Prepend adds items to the beginning of list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -657,6 +699,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Reduce"></a>
 ### func \(\*List\[T\]\) [Reduce](<https://github.com/atomicgo/list/blob/main/list.go#L88>)
 
 ```go
@@ -667,6 +710,8 @@ Reduce reduces the list to a single value by applying the given function to each
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -698,6 +743,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Remove"></a>
 ### func \(\*List\[T\]\) [Remove](<https://github.com/atomicgo/list/blob/main/list.go#L48>)
 
 ```go
@@ -708,6 +754,8 @@ Remove removes the item at the given index.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -737,6 +785,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Reverse"></a>
 ### func \(\*List\[T\]\) [Reverse](<https://github.com/atomicgo/list/blob/main/list.go#L131>)
 
 ```go
@@ -747,6 +796,8 @@ Reverse reverses the list.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -776,6 +827,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Set"></a>
 ### func \(\*List\[T\]\) [Set](<https://github.com/atomicgo/list/blob/main/list.go#L31>)
 
 ```go
@@ -786,6 +838,8 @@ Set sets the item at the given index.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -815,6 +869,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Shuffle"></a>
 ### func \(\*List\[T\]\) [Shuffle](<https://github.com/atomicgo/list/blob/main/list.go#L166>)
 
 ```go
@@ -825,6 +880,8 @@ Shuffle shuffles the list. You need to seed the random number generator yourself
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -857,6 +914,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Slice"></a>
 ### func \(\*List\[T\]\) [Slice](<https://github.com/atomicgo/list/blob/main/list.go#L60>)
 
 ```go
@@ -867,6 +925,8 @@ Slice returns the list as a slice.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -895,6 +955,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Sort"></a>
 ### func \(\*List\[T\]\) [Sort](<https://github.com/atomicgo/list/blob/main/list.go#L156>)
 
 ```go
@@ -905,6 +966,8 @@ Sort sorts the list using the given function.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -936,14 +999,19 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].String"></a>
 ### func \(List\[T\]\) [String](<https://github.com/atomicgo/list/blob/main/list.go#L181>)
 
 ```go
 func (l List[T]) String() string
 ```
 
+
+
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -972,6 +1040,7 @@ func main() {
 </p>
 </details>
 
+<a name="List[T].Swap"></a>
 ### func \(\*List\[T\]\) [Swap](<https://github.com/atomicgo/list/blob/main/list.go#L176>)
 
 ```go
@@ -982,6 +1051,8 @@ Swap swaps the items at the given indices.
 
 <details><summary>Example</summary>
 <p>
+
+
 
 ```go
 package main
@@ -1010,8 +1081,6 @@ func main() {
 
 </p>
 </details>
-
-
 
 Generated by [gomarkdoc](<https://github.com/princjef/gomarkdoc>)
 
