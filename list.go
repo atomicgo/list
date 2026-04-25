@@ -166,7 +166,7 @@ func (l *List[T]) Sort(f func(T, T) bool) *List[T] {
 // You need to seed the random number generator yourself.
 func (l *List[T]) Shuffle() *List[T] {
 	for i := range l.items {
-		j := rand.Intn(i + 1)
+		j := rand.Intn(i + 1) //nolint:gosec // Shuffle is not intended for cryptographic use.
 		l.items[i], l.items[j] = l.items[j], l.items[i]
 	}
 
