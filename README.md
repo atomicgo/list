@@ -240,7 +240,7 @@ func main() {
 
 
 <a name="List[T].Clear"></a>
-### func \(\*List\[T\]\) [Clear](<https://github.com/atomicgo/list/blob/main/list.go#L141>)
+### func \(\*List\[T\]\) [Clear](<https://github.com/atomicgo/list/blob/main/list.go#L142>)
 
 ```go
 func (l *List[T]) Clear() *List[T]
@@ -280,7 +280,7 @@ func main() {
 
 
 <a name="List[T].Contains"></a>
-### func \(List\[T\]\) [Contains](<https://github.com/atomicgo/list/blob/main/list.go#L109>)
+### func \(List\[T\]\) [Contains](<https://github.com/atomicgo/list/blob/main/list.go#L110>)
 
 ```go
 func (l List[T]) Contains(item T) bool
@@ -319,7 +319,7 @@ true
 
 
 <a name="List[T].Copy"></a>
-### func \(\*List\[T\]\) [Copy](<https://github.com/atomicgo/list/blob/main/list.go#L148>)
+### func \(\*List\[T\]\) [Copy](<https://github.com/atomicgo/list/blob/main/list.go#L149>)
 
 ```go
 func (l *List[T]) Copy() *List[T]
@@ -407,7 +407,7 @@ func main() {
 
 
 <a name="List[T].ForEach"></a>
-### func \(List\[T\]\) [ForEach](<https://github.com/atomicgo/list/blob/main/list.go#L102>)
+### func \(List\[T\]\) [ForEach](<https://github.com/atomicgo/list/blob/main/list.go#L103>)
 
 ```go
 func (l List[T]) ForEach(f func(T))
@@ -488,7 +488,7 @@ b
 
 
 <a name="List[T].IndexOf"></a>
-### func \(List\[T\]\) [IndexOf](<https://github.com/atomicgo/list/blob/main/list.go#L120>)
+### func \(List\[T\]\) [IndexOf](<https://github.com/atomicgo/list/blob/main/list.go#L121>)
 
 ```go
 func (l List[T]) IndexOf(item T) int
@@ -689,7 +689,7 @@ func main() {
 
 
 <a name="List[T].Reduce"></a>
-### func \(\*List\[T\]\) [Reduce](<https://github.com/atomicgo/list/blob/main/list.go#L88>)
+### func \(\*List\[T\]\) [Reduce](<https://github.com/atomicgo/list/blob/main/list.go#L89>)
 
 ```go
 func (l *List[T]) Reduce(f func(T, T) T) T
@@ -771,7 +771,7 @@ func main() {
 
 
 <a name="List[T].Reverse"></a>
-### func \(\*List\[T\]\) [Reverse](<https://github.com/atomicgo/list/blob/main/list.go#L131>)
+### func \(\*List\[T\]\) [Reverse](<https://github.com/atomicgo/list/blob/main/list.go#L132>)
 
 ```go
 func (l *List[T]) Reverse() *List[T]
@@ -851,7 +851,7 @@ func main() {
 
 
 <a name="List[T].Shuffle"></a>
-### func \(\*List\[T\]\) [Shuffle](<https://github.com/atomicgo/list/blob/main/list.go#L166>)
+### func \(\*List\[T\]\) [Shuffle](<https://github.com/atomicgo/list/blob/main/list.go#L167>)
 
 ```go
 func (l *List[T]) Shuffle() *List[T]
@@ -933,7 +933,7 @@ func main() {
 
 
 <a name="List[T].Sort"></a>
-### func \(\*List\[T\]\) [Sort](<https://github.com/atomicgo/list/blob/main/list.go#L156>)
+### func \(\*List\[T\]\) [Sort](<https://github.com/atomicgo/list/blob/main/list.go#L157>)
 
 ```go
 func (l *List[T]) Sort(f func(T, T) bool) *List[T]
@@ -975,7 +975,7 @@ func main() {
 
 
 <a name="List[T].String"></a>
-### func \(List\[T\]\) [String](<https://github.com/atomicgo/list/blob/main/list.go#L181>)
+### func \(List\[T\]\) [String](<https://github.com/atomicgo/list/blob/main/list.go#L182>)
 
 ```go
 func (l List[T]) String() string
@@ -1014,7 +1014,7 @@ func main() {
 
 
 <a name="List[T].Swap"></a>
-### func \(\*List\[T\]\) [Swap](<https://github.com/atomicgo/list/blob/main/list.go#L176>)
+### func \(\*List\[T\]\) [Swap](<https://github.com/atomicgo/list/blob/main/list.go#L177>)
 
 ```go
 func (l *List[T]) Swap(i, j int) *List[T]
