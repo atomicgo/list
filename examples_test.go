@@ -192,7 +192,6 @@ func ExampleList_Copy() {
 	// [a b c appended appended1]
 	// [a b c appended appended2]
 	// [a b c appended]
-
 }
 
 func ExampleList_Clear() {

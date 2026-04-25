@@ -73,6 +73,7 @@ func (l *List[T]) Map(f func(T) T) *List[T] {
 // Filter removes all items from the list that do not match the given predicate.
 func (l *List[T]) Filter(f func(T) bool) *List[T] {
 	var filtered []T
+
 	for _, item := range l.items {
 		if f(item) {
 			filtered = append(filtered, item)
